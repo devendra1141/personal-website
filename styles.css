@@ -43,6 +43,15 @@
   --contact-accent: #14532d;
 }
 
+[data-theme="lis"] {
+  --ink: #f4ecd8;
+  --paper: #2b2726;
+  --red: #d36647;
+  --yellow: #e0a652;
+  --line: #423c3a;
+  --contact-accent: #d36647;
+}
+
 * { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
@@ -171,6 +180,43 @@ h2 { margin-top: clamp(3rem, 7vw, 5.5rem); font-size: clamp(3rem, 8vw, 7.5rem); 
 .email span { color: var(--contact-accent); font-size: 1.3em; }
 
 footer { display: flex; justify-content: space-between; gap: 1.5rem; padding-top: 1.3rem; padding-bottom: 1.3rem; font: .64rem/1.4 "DM Mono", monospace; text-transform: uppercase; letter-spacing: .03em; }
+
+/* Life is Strange Easter Eggs */
+.lis-butterfly, .lis-talk, .lis-tape, .lis-easter-egg { display: none; }
+.default-talk, .default-tape { display: inline; }
+
+[data-theme="lis"] .lis-butterfly { display: inline; }
+[data-theme="lis"] .default-talk { display: none; }
+[data-theme="lis"] .lis-talk { display: inline; }
+[data-theme="lis"] .default-tape { display: none; }
+[data-theme="lis"] .lis-tape { display: inline; font-weight: bold; letter-spacing: 0; }
+
+[data-theme="lis"] .lis-easter-egg {
+  display: block;
+  position: absolute;
+  right: -2rem;
+  top: 10%;
+  width: clamp(200px, 20vw, 320px);
+  transform: rotate(6deg);
+  z-index: -1;
+  pointer-events: none;
+  animation: float 6s ease-in-out infinite;
+}
+
+[data-theme="lis"] .lis-easter-egg img {
+  width: 100%;
+  box-shadow: 0 16px 32px rgba(0,0,0,0.5);
+  border-radius: 4px;
+}
+
+[data-theme="lis"] .hero::after {
+  display: none; /* Hide the yellow circle to let the polaroid shine */
+}
+
+@keyframes float {
+  0%, 100% { transform: rotate(6deg) translateY(0); }
+  50% { transform: rotate(3deg) translateY(-10px); }
+}
 
 @media (max-width: 560px) {
   .hero { min-height: 650px; }

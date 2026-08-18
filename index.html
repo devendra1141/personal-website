@@ -18,7 +18,8 @@
   <main class="page-shell">
     <header class="site-header">
       <nav class="nav" aria-label="Main navigation">
-        <a class="wordmark" href="#top" aria-label="Devendra Pandey home">DP<span>.</span></a>
+        <a class="wordmark" href="#top" aria-label="Devendra Pandey home">DP<span>.</span><span class="lis-butterfly">
+            🦋</span></a>
         <div class="nav-actions">
           <div class="theme-dropdown">
             <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
@@ -28,6 +29,7 @@
               <button class="theme-btn" data-set-theme="cozy">Cozy</button>
               <button class="theme-btn" data-set-theme="ocean">Ocean</button>
               <button class="theme-btn" data-set-theme="forest">Forest</button>
+              <button class="theme-btn" data-set-theme="lis">Life is Strange</button>
             </div>
           </div>
           <a class="nav-contact" href="mailto:contactme@devendrapandey.in">Say hello <span
@@ -39,17 +41,23 @@
     <section class="hero" id="top" aria-labelledby="intro-title">
       <p class="eyebrow">Student</p>
       <h1 id="intro-title">Devendra<br /><em>Pandey.</em></h1>
+      <div class="lis-easter-egg" aria-hidden="true">
+        <img src="lis-sunset.jpg" alt="Chloe and Max at sunset" />
+      </div>
       <div class="hero-bottom">
         <p class="intro">A chill commerce senior student who probably hates college and also is kind of a networking
           geek, as well as a really passionate gamer.</p>
         <a class="round-link" href="mailto:contactme@devendrapandey.in" aria-label="Email Devendra Pandey">
-          <span>Let's<br />talk</span><b aria-hidden="true">↗</b>
+          <span class="default-talk">Let's<br />talk</span>
+          <span class="lis-talk">Hella<br />Talk</span>
+          <b aria-hidden="true">↗</b>
         </a>
       </div>
     </section>
 
     <section class="about" aria-label="A little more about Devendra">
-      <div class="tape">currently figuring it out</div>
+      <div class="tape"><span class="default-tape">currently figuring it out</span><span class="lis-tape">this action
+          will have consequences...</span></div>
       <p class="section-number">01 / ABOUT</p>
       <p class="about-copy">A chill commerce senior student who probably hates college and also is kind of a networking
         geek, as well as a really passionate gamer.</p>
@@ -87,7 +95,7 @@
   </main>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    const themes = ['light', 'dark', 'cozy', 'ocean', 'forest'];
+    const themes = ['light', 'dark', 'cozy', 'ocean', 'forest', 'lis'];
     let currentThemeIndex = 0;
 
     // Cycle on button click
