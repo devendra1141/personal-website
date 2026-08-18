@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Devendra Pandey — commerce student and video editor." />
+    <title>Devendra Pandey — Video Editor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Playfair+Display:ital,wght@600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="wordmark" href="#top" aria-label="Devendra Pandey home">DP<span>.</span></a>
+        <a class="nav-contact" href="mailto:contactme@devendrapandey.in">Say hello <span aria-hidden="true">↗</span></a>
+      </nav>
+
+      <section class="hero" id="top" aria-labelledby="intro-title">
+        <p class="eyebrow">Commerce student · Video editor</p>
+        <h1 id="intro-title">Devendra<br /><em>Pandey.</em></h1>
+        <div class="hero-bottom">
+          <p class="intro">A chill senior commerce student who probably hates college — but loves making good videos.</p>
+          <a class="round-link" href="mailto:contactme@devendrapandey.in" aria-label="Email Devendra Pandey">
+            <span>Let's<br />talk</span><b aria-hidden="true">↗</b>
+          </a>
+        </div>
+      </section>
+
+      <section class="about" aria-label="A little more about Devendra">
+        <div class="tape">currently figuring it out</div>
+        <p class="section-number">01 / ABOUT</p>
+        <p class="about-copy">Mostly editing videos, occasionally studying commerce, and permanently wondering why college starts so early.</p>
+        <div class="scribble" aria-hidden="true">✳</div>
+      </section>
+
+      <section class="contact" aria-labelledby="contact-title">
+        <p class="section-number">02 / CONTACT</p>
+        <h2 id="contact-title">Got a video that<br />needs <em>life?</em></h2>
+        <a class="email" href="mailto:contactme@devendrapandey.in">contactme@devendrapandey.in <span aria-hidden="true">↗</span></a>
+      </section>
+
+      <footer>
+        <span>© <span id="year"></span> Devendra Pandey</span>
+        <span>Made somewhere between class and a deadline.</span>
+      </footer>
+    </main>
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
