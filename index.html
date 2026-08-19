@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="rdr2">
 
 <head>
   <meta charset="UTF-8" />
@@ -16,6 +16,13 @@
 
 <body>
   <main class="page-shell">
+    <div class="theme-backgrounds" aria-hidden="true">
+      <img src="rdr2.png" alt="" class="full-bg rdr2-full-bg" />
+      <div class="full-bg sifu-full-bg">
+        <img src="sifu.jpg" alt="" class="sifu-main-bg" />
+        <img src="sifu-logo-transparent.png" alt="" class="sifu-logo-bg" />
+      </div>
+    </div>
     <header class="site-header">
       <nav class="nav" aria-label="Main navigation">
         <a class="wordmark" href="#top" aria-label="Devendra Pandey home">DP<span>.</span><span class="lis-butterfly">
@@ -24,15 +31,18 @@
           <div class="theme-dropdown">
             <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
             <div class="theme-menu">
+              <button class="theme-btn" data-set-theme="lis">Life is Strange</button>
+              <button class="theme-btn" data-set-theme="cyberpunk">Cyberpunk 2077</button>
+              <button class="theme-btn" data-set-theme="rdr2">Red Dead Redemption 2</button>
+              <button class="theme-btn" data-set-theme="sifu">Sifu</button>
               <button class="theme-btn" data-set-theme="light">Light</button>
               <button class="theme-btn" data-set-theme="dark">Dark</button>
               <button class="theme-btn" data-set-theme="cozy">Cozy</button>
               <button class="theme-btn" data-set-theme="ocean">Ocean</button>
               <button class="theme-btn" data-set-theme="forest">Forest</button>
-              <button class="theme-btn" data-set-theme="lis">Life is Strange</button>
             </div>
           </div>
-          <a class="nav-contact" href="mailto:contactme@devendrapandey.in">Say hello <span
+          <a class="nav-contact" href="mailto:contact.me@devendrapandey.in">Say hello <span
               aria-hidden="true">↗</span></a>
         </div>
       </nav>
@@ -41,13 +51,14 @@
     <section class="hero" id="top" aria-labelledby="intro-title">
       <p class="eyebrow">Student</p>
       <h1 id="intro-title">Devendra<br /><em>Pandey.</em></h1>
-      <div class="lis-easter-egg" aria-hidden="true">
-        <img src="lis-sunset.jpg" alt="Chloe and Max at sunset" />
+      <div class="easter-egg-container" aria-hidden="true">
+        <img src="lis-room.png" alt="Max in her dorm room with photo wall and fairy lights" class="theme-egg lis-egg" />
+        <img src="cyberpunk.jpg" alt="Cyberpunk 2077 V" class="theme-egg cyberpunk-egg" />
       </div>
       <div class="hero-bottom">
-        <p class="intro">A chill commerce senior student who probably hates college and also is kind of a networking
-          geek, as well as a really passionate gamer.</p>
-        <a class="round-link" href="mailto:contactme@devendrapandey.in" aria-label="Email Devendra Pandey">
+        <p class="intro">Hey there, welcome to my corner of the web! Feel free to check my website out and yeah, I'm
+          open for suggestions.</p>
+        <a class="round-link" href="mailto:contact.me@devendrapandey.in" aria-label="Email Devendra Pandey">
           <span class="default-talk">Let's<br />talk</span>
           <span class="lis-talk">Hella<br />Talk</span>
           <b aria-hidden="true">↗</b>
@@ -59,8 +70,9 @@
       <div class="tape"><span class="default-tape">currently figuring it out</span><span class="lis-tape">this action
           will have consequences...</span></div>
       <p class="section-number">01 / ABOUT</p>
-      <p class="about-copy">A chill commerce senior student who probably hates college and also is kind of a networking
-        geek, as well as a really passionate gamer.</p>
+      <p class="about-copy">I'm a commerce senior navigating through college
+        life. Beyond the books, I'm a huge networking geek and a passionate gamer always looking for the next adventure.
+      </p>
       <div class="about-socials" style="display: flex; gap: 2rem; align-items: center; margin-top: 3rem;">
         <a href="https://steamcommunity.com/profiles/76561199100453343/" target="_blank" rel="noopener noreferrer"
           style="color: inherit; text-decoration: none; display: flex; align-items: center; gap: 0.6rem; transition: transform 0.2s; cursor: pointer;"
@@ -84,7 +96,7 @@
     <section class="contact" aria-labelledby="contact-title">
       <p class="section-number">02 / CONTACT</p>
       <h2 id="contact-title">Let's connect and<br /><em>talk.</em></h2>
-      <a class="email" href="mailto:contactme@devendrapandey.in">contactme@devendrapandey.in <span
+      <a class="email" href="mailto:contact.me@devendrapandey.in">contact.me@devendrapandey.in <span
           aria-hidden="true">↗</span></a>
     </section>
 
@@ -92,17 +104,56 @@
       <span>© <span id="year"></span> Devendra Pandey</span>
       <span>Made somewhere between class and a deadline.</span>
     </footer>
+
+    <div id="consent-banner" class="consent-banner" aria-hidden="true" style="display: none;">
+      <p>Can we save your theme preference in your browser?</p>
+      <div class="consent-actions">
+        <button id="consent-yes" class="consent-btn yes">Sure</button>
+        <button id="consent-no" class="consent-btn no">No thanks</button>
+      </div>
+    </div>
   </main>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    const themes = ['light', 'dark', 'cozy', 'ocean', 'forest', 'lis'];
-    let currentThemeIndex = 0;
+    const themes = ['rdr2', 'lis', 'cyberpunk', 'sifu', 'light', 'dark', 'cozy', 'ocean', 'forest'];
+
+    // Load saved theme if consent was given
+    const hasConsent = localStorage.getItem('themeConsent');
+    const savedTheme = localStorage.getItem('userTheme');
+    if (hasConsent === 'true' && savedTheme) {
+      document.documentElement.dataset.theme = savedTheme;
+    }
+
+    let currentThemeIndex = themes.indexOf(document.documentElement.dataset.theme);
+    if (currentThemeIndex === -1) currentThemeIndex = 0;
+
+    // Show consent banner if no choice made
+    if (!hasConsent) {
+      const banner = document.getElementById('consent-banner');
+      banner.style.display = 'flex';
+      banner.removeAttribute('aria-hidden');
+    }
+
+    document.getElementById('consent-yes').addEventListener('click', () => {
+      localStorage.setItem('themeConsent', 'true');
+      localStorage.setItem('userTheme', document.documentElement.dataset.theme);
+      document.getElementById('consent-banner').style.display = 'none';
+    });
+
+    document.getElementById('consent-no').addEventListener('click', () => {
+      localStorage.setItem('themeConsent', 'false');
+      document.getElementById('consent-banner').style.display = 'none';
+    });
 
     // Cycle on button click
     const themeToggle = document.getElementById('theme-toggle');
     themeToggle.addEventListener('click', () => {
       currentThemeIndex = (currentThemeIndex + 1) % themes.length;
-      document.documentElement.dataset.theme = themes[currentThemeIndex];
+      const newTheme = themes[currentThemeIndex];
+      document.documentElement.dataset.theme = newTheme;
+      if (localStorage.getItem('themeConsent') === 'true') {
+        localStorage.setItem('userTheme', newTheme);
+      }
     });
 
     // Select from dropdown
@@ -111,6 +162,9 @@
         const selectedTheme = e.target.getAttribute('data-set-theme');
         document.documentElement.dataset.theme = selectedTheme;
         currentThemeIndex = themes.indexOf(selectedTheme);
+        if (localStorage.getItem('themeConsent') === 'true') {
+          localStorage.setItem('userTheme', selectedTheme);
+        }
       });
     });
   </script>
