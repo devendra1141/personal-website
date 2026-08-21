@@ -1,7 +1,7 @@
 {
-  name: personal-websitenext-js,
-  compatibility_date: 2024-09-23,
-  assets: {
-    directory: ./out
+  "name": "personal-websitenext-js",
+  "compatibility_date": "2024-09-23",
+  "assets": {
+    "directory": "./out"
   }
 }
