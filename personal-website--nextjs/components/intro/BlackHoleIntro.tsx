@@ -61,7 +61,7 @@ export default function BlackHoleIntro() {
           const r = maskObj.radius;
           const maskString = `radial-gradient(circle, transparent ${r}%, black ${r + 20}%)`;
           bgRef.current.style.maskImage = maskString;
-          bgRef.current.style.WebkitMaskImage = maskString;
+          (bgRef.current.style as any).webkitMaskImage = maskString;
         }
       }
     }, 0); // Start expanding the hole immediately on click
